@@ -1,0 +1,91 @@
+# PLAYWRIGHT + GIT COMPLETE FLOW
+
+# 1. Create Playwright project
+npm init playwright@latest
+
+# 2. Initialize Git repository
+git init
+
+# 3. Rename default branch to main
+git branch -M main
+
+# 4. Check Git status
+git status
+
+# 5. Add all files
+git add .
+
+# 6. Commit the initial Playwright project
+git commit -m "Initial Playwright setup"
+
+# 7. Add GitHub remote repository
+git remote add origin https://github.com/VineethRajendran7/Solartis.git
+
+# 8. Push main branch to GitHub
+git push -u origin main
+
+# 9. Create a feature branch
+git switch -c feature/playwright_test
+
+# 10. Check current branch
+git branch
+
+# 11. Add modified/new files
+git add .
+
+# 12. Commit the changes
+git commit -m "Waits added"
+
+# 13. Push feature branch to GitHub
+git push -u origin feature/playwright_test
+
+# 14. Continue working on your feature branch
+# Make code changes in VS Code
+
+# 15. Check what has changed
+git status
+
+# 16. Check the exact changes
+git diff
+
+# 17. Add the modified/new files
+git add .
+
+# 18. Commit the changes
+git commit -m "Updated Playwright test cases"
+
+# 19. Push the latest feature branch changes
+git push
+
+# 20. Switch to main branch
+git switch main
+
+# 21. Pull the latest changes from GitHub main
+git pull origin main
+
+# 22. Switch back to your feature branch
+git switch feature/playwright_test
+
+# 23. Get the latest changes from remote feature branch
+git pull origin feature/playwright_test
+
+# 24. Merge latest main into your feature branch
+git merge main
+
+# 25. If there are no conflicts, push the updated feature branch
+git push
+
+# 26. Continue making changes in the feature branch
+# Make your Playwright code changes
+
+# 27. Check status
+git status
+
+# 28. Add changes
+git add .
+
+# 29. Commit changes
+git commit -m "Added Playwright test scenarios"
+
+# 30. Push changes
+git push
