@@ -1,0 +1,771 @@
+PROMPT 1 — PLAYWRIGHT WORKSPACE INITIALIZATION
+
+I — INSTRUCTION
+
+Create a new Playwright TypeScript project at this exact local path:
+
+<PASTE FULL LOCAL PATH HERE>\playwright-framework
+
+The project must be initialized as a professional Playwright TypeScript workspace and the newly created folder must automatically become the active VS Code workspace.
+
+C — CONTEXT
+
+This is a new Playwright framework project.
+
+The setup must be performed using the VS Code integrated terminal.
+
+Do not require manual workspace opening after project creation.
+
+E — EXAMPLES
+
+Create and configure the project using:
+
+npm init playwright@latest
+
+Then configure Playwright Agents for Claude using:
+
+npx playwright init-agents --loop=claude
+
+The setup must result in a working Playwright TypeScript project with the required Playwright configuration, browsers, and Claude Playwright Agents/MCP configuration.
+
+P — PERSONA
+
+Act as a Senior Playwright Automation Framework Setup Engineer.
+
+Perform the setup autonomously using the VS Code integrated terminal.
+
+Prioritize a clean, working, standard Playwright TypeScript project setup.
+
+O — OUTPUT
+
+After implementation, confirm:
+
+1. Folder created at the exact requested path.
+2. Newly created folder automatically opened as the active VS Code workspace.
+3. Playwright TypeScript project created successfully.
+4. playwright.config.ts created.
+5. Required Playwright browsers installed.
+6. Playwright Agents/MCP for Claude configured.
+7. Final project structure displayed.
+8. Any setup issue encountered and the resolution applied.
+
+Do not claim successful completion unless the setup has actually been validated.
+
+T — TONE
+
+Be concise, technical, action-oriented, and implementation-focused.
+
+Do not ask the user to manually open the workspace.
+
+Do not modify unrelated files.
+
+If a command fails, diagnose the actual cause and fix it safely before continuing.
+
+
+============================================================
+
+PROMPT 2 — PLAYWRIGHT CONFIGURATION
+
+I — INSTRUCTION
+
+Configure the existing playwright.config.ts in the current Playwright workspace using a standard professional Playwright configuration.
+
+The configuration must support reliable execution, debugging, reporting, and maintainability.
+
+C — CONTEXT
+
+The Playwright project has already been created in the previous setup step.
+
+Modify the existing project only.
+
+Do not recreate the Playwright project.
+
+Do not remove existing working framework files.
+
+Do not create another Playwright configuration file unless absolutely required by a documented technical limitation.
+
+Preserve existing working configuration and add only the configuration required for this step.
+
+E — EXAMPLES
+
+Update playwright.config.ts to include, as applicable:
+
+1. TypeScript Playwright configuration.
+2. Chrome/Chromium as the default browser.
+3. Parallel test execution.
+4. Screenshots.
+5. Videos.
+6. Traces.
+7. Appropriate test timeout.
+8. Appropriate expect timeout.
+9. Base URL configuration.
+10. Retry configuration.
+11. Workers configuration.
+12. Reporter configuration.
+13. Standard use configuration.
+14. Appropriate projects configuration.
+
+The default browser/project must be Chrome/Chromium only.
+
+Do not configure Firefox or WebKit unless explicitly required later.
+
+Configure screenshots, videos, and traces appropriately for debugging and failure analysis.
+
+Follow Playwright's standard configuration practices.
+
+Keep the configuration clean, readable, maintainable, and consistent with the existing project.
+
+P — PERSONA
+
+Act as a Senior Playwright Framework Architect.
+
+Modify only the configuration required for this step.
+
+Preserve the existing project structure and working configuration.
+
+O — OUTPUT
+
+After modification:
+
+1. Show the complete final playwright.config.ts.
+2. Confirm Chrome/Chromium is the default browser.
+3. Confirm parallel execution is configured.
+4. Confirm screenshots are configured.
+5. Confirm videos are configured.
+6. Confirm traces are configured.
+7. Confirm test timeout and expect timeout are configured appropriately.
+8. Confirm base URL, retries, workers, reporters, and use configuration are present where required.
+9. Confirm the configuration is syntactically valid.
+10. Report any unavoidable deviation from the requested configuration.
+
+T — TONE
+
+Be concise, precise, technical, and implementation-focused.
+
+Do not create unnecessary files.
+
+Do not change unrelated code.
+
+Do not rewrite the entire configuration file unnecessarily.
+
+
+============================================================
+
+PROMPT 3 — PLAYWRIGHT FRAMEWORK ARCHITECTURE
+
+I — INSTRUCTION
+
+Enhance the existing Playwright project into a professional automation framework by implementing the required framework standards and architecture.
+
+The resulting framework must be scalable, reusable, maintainable, and suitable for real-world automation projects.
+
+C — CONTEXT
+
+The Playwright workspace and playwright.config.ts were already created in previous steps.
+
+Build the framework on top of the existing structure.
+
+Do not recreate the project.
+
+Do not remove existing working configuration.
+
+Do not introduce unnecessary libraries or duplicate functionality.
+
+The framework must appropriately separate application pages, tests, utilities, fixtures, configuration, data, Cucumber features, and step definitions.
+
+E — EXAMPLES
+
+Implement the following framework requirements.
+
+1. PAGE OBJECT MODEL
+
+- All application test cases must follow Page Object Model.
+- Keep locators inside appropriate page classes.
+- Keep page actions and reusable page-specific methods inside page classes.
+- Tests should contain test flow and assertions, not duplicated application locators.
+- Do not create unnecessary page classes.
+- Do not create one page class containing unrelated application pages.
+
+Preferred flow:
+
+Test
+  ↓
+Page Object
+  ↓
+Locator
+  ↓
+Application
+
+2. CUCUMBER
+
+- Integrate Cucumber with Playwright.
+- Establish a clean structure for feature files, step definitions, and supporting code.
+- Keep Cucumber integration maintainable and compatible with the existing Playwright framework.
+- Cucumber and Playwright should reuse the same Page Object Model wherever practical.
+
+Preferred architecture:
+
+Feature
+  ↓
+Step Definition
+  ↓
+Page Object
+  ↓
+Playwright
+  ↓
+Application
+
+3. FALLBACK / RECOVERY
+
+- Add fallback/recovery mechanisms only where technically justified.
+- Fallback logic must be reusable and isolated.
+- Do not hide genuine test failures.
+- Do not convert failed tests into passed tests.
+- Do not use excessive retries.
+- Do not replace proper synchronization.
+- Do not silently suppress exceptions.
+- Do not use generic try/catch blocks that ignore failures.
+- Document the purpose of any fallback that is implemented.
+
+4. OOPS
+
+Apply OOPS principles only where they provide genuine architectural value.
+
+Use, where appropriate:
+
+- Classes
+- Encapsulation
+- Abstraction
+- Inheritance
+- Polymorphism
+
+Do not artificially introduce inheritance, interfaces, or abstractions simply to demonstrate OOPS.
+
+Use private/protected members where appropriate and keep responsibilities separated.
+
+5. ASSERTIONS
+
+- Use Playwright's recommended assertions.
+- Keep assertions meaningful and close to the validation being performed.
+- Assertions must validate actual business/test requirements.
+- Avoid unnecessary hard-coded waits such as page.waitForTimeout().
+- Prefer Playwright auto-waiting and assertions for synchronization.
+
+Examples:
+
+await expect(page.getByRole("heading")).toBeVisible();
+await expect(page).toHaveTitle("Expected Title");
+await expect(locator).toHaveText("Expected Text");
+await expect(locator).toHaveValue("Expected Value");
+
+6. ALLURE REPORTING
+
+- Integrate Allure reporting.
+- Configure generation of Allure result files.
+- Add the required npm scripts/configuration for generating and viewing Allure reports.
+- Preserve the existing Playwright HTML report.
+- Do not replace Playwright's built-in reporting.
+
+The project must support:
+
+Playwright HTML Report
++
+Allure Report
+
+7. FRAMEWORK STRUCTURE
+
+Organize the project using a clean and reusable structure.
+
+Use the following standard structure where applicable:
+
+project-root/
+├── tests/
+│   ├── specs/
+│   │   └── *.spec.ts
+│   └── fixtures/
+│       └── *.fixture.ts
+├── pages/
+│   └── *.page.ts
+├── utils/
+│   └── *.util.ts
+├── data/
+│   └── *
+├── features/
+│   └── *.feature
+├── step-definitions/
+│   └── *.steps.ts
+├── support/
+│   └── *
+├── config/
+│   └── *
+├── playwright.config.ts
+├── package.json
+├── tsconfig.json
+└── README.md
+
+Responsibilities:
+
+tests/specs:
+- Playwright test specifications.
+- Test scenarios, test flow, and assertions.
+
+tests/fixtures:
+- Custom Playwright fixtures.
+- Reusable test setup and dependency injection.
+
+pages:
+- Page Object Model classes.
+- Locators, page actions, and page-specific reusable methods.
+
+utils:
+- Reusable utility/helper functions.
+- Do not place page-specific functionality here.
+
+data:
+- Test data.
+- Avoid unnecessary hard-coded test data inside test files.
+
+features:
+- Cucumber .feature files containing business scenarios.
+
+step-definitions:
+- Cucumber step implementations.
+
+support:
+- Cucumber-specific supporting code such as hooks and world/context.
+
+config:
+- Environment/configuration-related framework code when required.
+- Do not duplicate playwright.config.ts.
+
+8. NAMING CONVENTIONS
+
+Use consistent naming conventions.
+
+Page Objects:
+- login.page.ts
+- create-lead.page.ts
+- home.page.ts
+
+Classes:
+- LoginPage
+- CreateLeadPage
+- HomePage
+
+Tests:
+- login.spec.ts
+- create-lead.spec.ts
+
+Fixtures:
+- test.fixture.ts
+
+Utilities:
+- date.util.ts
+- api.util.ts
+- file.util.ts
+
+Cucumber steps:
+- login.steps.ts
+- create-lead.steps.ts
+
+Feature files:
+- login.feature
+- create-lead.feature
+
+Avoid inconsistent names such as LoginPage.ts, LoginPageObject.ts, loginPage.ts, or loginTest.ts unless the existing project already follows that convention and changing it would break the project.
+
+9. PACKAGE DEPENDENCIES
+
+Before installing any dependency:
+
+- Check package.json.
+- Check whether the functionality already exists.
+- Reuse existing dependencies where possible.
+- Do not install duplicate libraries.
+- Use the minimum dependencies required for Playwright, TypeScript, Cucumber, and Allure.
+- Do not introduce unrelated frameworks.
+- Ensure installed versions are compatible with the existing Playwright version.
+
+10. PLAYWRIGHT CONFIGURATION
+
+Modify the existing playwright.config.ts only.
+
+Preserve existing working configuration.
+
+Add only required framework configuration.
+
+Support existing requirements such as:
+
+- browser configuration
+- screenshots
+- traces
+- videos
+- parallel execution
+- retries
+- reporting
+
+Do not unnecessarily rewrite the complete configuration.
+
+P — PERSONA
+
+Act as a Senior Playwright Framework Architect and Senior TypeScript Automation Engineer.
+
+Design decisions must prioritize:
+
+1. Consistency
+2. Maintainability
+3. Reusability
+4. Scalability
+5. Simplicity
+6. Testability
+7. Minimal dependencies
+
+Do not introduce architecture merely for demonstration purposes.
+
+O — OUTPUT
+
+After implementation:
+
+1. Display the complete final framework folder structure.
+2. Explain the purpose of each major folder/file.
+3. Show the important framework configuration changes.
+4. Explain changes to playwright.config.ts, package.json, and tsconfig.json.
+5. Confirm POM implementation and list page classes created or reused.
+6. Confirm Cucumber integration and list feature files, step definitions, and support files.
+7. Confirm fallback implementation and explain where/why it is required.
+8. Confirm OOPS usage and list the actual principles applied.
+9. Confirm Playwright assertion usage and major assertion patterns.
+10. Confirm Allure integration and show npm scripts for results, report generation, and report viewing.
+11. Validate TypeScript compilation.
+12. Validate Playwright test discovery.
+13. Validate Playwright test execution.
+14. Validate Cucumber discovery/execution where applicable.
+15. Validate Allure result generation.
+16. If any command fails, investigate the actual cause, fix it where possible, and report any remaining issue.
+17. Do not claim successful completion unless the project has actually been validated.
+
+T — TONE
+
+Be concise, technical, deterministic, explicit, and implementation-focused.
+
+Do not provide multiple alternative architectures.
+
+Do not ask the AI to choose folder names.
+
+Do not invent additional framework layers.
+
+Do not create duplicate functionality.
+
+Do not restructure working code without a technical reason.
+
+The specified folder structure, naming convention, and architecture are the source of truth.
+
+If the existing project conflicts with this specification:
+
+1. Preserve working functionality.
+2. Adapt the minimum number of files.
+3. Follow this specification for all newly created components.
+4. Clearly report any unavoidable deviation.
+
+FINAL RULE
+
+Do not make architectural decisions that are not specified in this prompt when an equivalent implementation can follow the defined standard.
+
+
+============================================================
+
+PROMPT 4 — TEST SCENARIO / FUNCTIONALITY AUTOMATION
+
+I — INSTRUCTION
+
+Using the Test Scenario and application credentials provided by the user, inspect the application, understand the required user flow, and generate the corresponding Playwright automation code using the existing framework structure.
+
+The implementation must follow the established framework standards and must work within the existing Playwright project.
+
+C — CONTEXT
+
+The Playwright framework has already been created and configured in previous steps.
+
+Use the existing framework rather than creating a separate standalone Playwright project.
+
+The following framework standards must be followed:
+
+- Page Object Model
+- Playwright Test
+- Cucumber where applicable
+- Reusable utilities
+- Fixtures where applicable
+- OOPS principles where applicable
+- Playwright assertions
+- Fallback/recovery mechanisms where technically justified
+- Allure reporting
+- Existing playwright.config.ts
+- Existing project folder structure
+
+The user will provide:
+
+Application URL:
+<APPLICATION URL>
+
+Username:
+<USERNAME>
+
+Password:
+<PASSWORD>
+
+Test Scenario:
+<PASTE TEST SCENARIO HERE>
+
+If the user instead provides a functionality name, use:
+
+Functionality:
+<FUNCTIONALITY NAME>
+
+Only implement the requested functionality and its required supporting code.
+
+E — EXAMPLES
+
+For the provided scenario/functionality:
+
+1. Inspect the existing project structure.
+2. Inspect and understand the application.
+3. Open the application.
+4. Use the provided credentials to log in when required.
+5. Inspect the actual application DOM.
+6. Understand the required user flow.
+7. Identify reliable Playwright locators.
+8. Reuse existing Page Objects, utilities, fixtures, and helpers.
+9. Create or update the appropriate Page Object only when required.
+10. Create the required Playwright test/specification.
+11. Create or update Cucumber feature and step-definition files when applicable.
+12. Use Playwright assertions for validations.
+13. Follow the existing project naming and folder structure.
+14. Do not duplicate existing page objects, utilities, fixtures, or helpers.
+15. Execute the generated test.
+16. Fix genuine locator or code issues discovered during execution.
+17. Verify that the final test passes.
+
+Use actual DOM information from the application rather than guessing selectors.
+
+Prefer stable Playwright locators such as:
+
+- getByRole()
+- getByLabel()
+- getByPlaceholder()
+- getByText()
+- locator()
+
+Use CSS/XPath only when appropriate and when more reliable Playwright locators are unavailable.
+
+Do not guess application behavior or selectors when the application can be inspected.
+
+Do not create a new Playwright project.
+
+Do not change the existing framework architecture.
+
+P — PERSONA
+
+Act as a Senior Playwright Automation Engineer and Senior Framework Architect.
+
+You are responsible for:
+
+- understanding the application
+- understanding the requested user flow
+- inspecting the DOM
+- selecting reliable locators
+- reusing existing framework components
+- implementing production-quality automation
+- validating the implementation through execution
+
+Prioritize maintainability, reliability, reusability, and consistency with the existing framework.
+
+O — OUTPUT
+
+After implementation:
+
+1. Show the files created or modified.
+2. Show the final test scenario implementation.
+3. Show the Page Object implementation.
+4. Show Cucumber files if applicable.
+5. Explain the important locators used.
+6. Explain the assertions implemented.
+7. Explain any utilities or fixtures reused/created.
+8. Explain any fallback/recovery logic implemented, if applicable.
+9. Run the test.
+10. Report the execution result.
+11. Report any issues found and fixed.
+12. Show the final relevant project structure.
+13. Confirm that the requested functionality has been implemented.
+14. Clearly report any remaining issue if the test could not be validated successfully.
+
+T — TONE
+
+Be concise, technical, deterministic, and implementation-focused.
+
+Work directly in the existing workspace.
+
+Reuse existing framework components wherever possible.
+
+Do not create duplicate files, duplicate utilities, unnecessary code, or a separate Playwright project.
+
+Do not claim that the test passes unless it has actually been executed and validated.
+
+
+
+
+============================================================
+
+# PROMPT 4A — MULTIPLE SCENARIO FOLLOW-UP
+
+## I — INSTRUCTION
+
+Implement the test scenarios provided below using the exact Playwright automation framework, architecture, configuration, coding standards, and implementation approach established in the previous prompt.
+
+This is a follow-up prompt to the previous Playwright automation prompt.
+
+The previous prompt is the source of truth for everything except the scenarios provided below.
+
+## C — CONTEXT
+
+Continue from the existing Playwright framework created and configured in the previous prompt.
+
+Follow the previous prompt exactly for:
+- Framework architecture
+- Folder structure
+- Page Object Model
+- Playwright Test
+- Cucumber integration
+- Fixtures
+- Utilities
+- OOPS principles
+- Assertions
+- Locators
+- Fallback/recovery
+- Allure reporting
+- Naming conventions
+- Coding standards
+- `playwright.config.ts`
+- Application URL
+- Authentication
+- Existing Page Objects
+- Existing utilities
+- Existing fixtures
+- Existing framework components
+
+Do not ask for or redefine any of the above.
+Do not recreate or redesign the framework.
+Do not create a new Playwright project.
+Do not create a new framework structure.
+Do not repeat the setup from the previous prompt.
+
+## E — EXAMPLES
+
+### SCENARIOS
+
+Only the scenarios below will be provided as input to this follow-up prompt.
+
+#### Scenario 1 — `<SCENARIO NAME>`
+`<SCENARIO DESCRIPTION>`
+
+#### Scenario 2 — `<SCENARIO NAME>`
+`<SCENARIO DESCRIPTION>`
+
+#### Scenario 3 — `<SCENARIO NAME>`
+`<SCENARIO DESCRIPTION>`
+
+#### Scenario 4 — `<SCENARIO NAME>`
+`<SCENARIO DESCRIPTION>`
+
+#### Scenario 5 — `<SCENARIO NAME>`
+`<SCENARIO DESCRIPTION>`
+
+The number of scenarios is not fixed. Implement every scenario provided.
+
+### STRICT INPUT RULE
+
+The user must provide ONLY the scenario names and scenario descriptions.
+
+Do not expect the user to provide:
+- Application URL
+- Username
+- Password
+- Framework details
+- Folder structure
+- Page Object instructions
+- Playwright configuration
+- Locator strategy
+- Assertion strategy
+- Cucumber configuration
+- Allure configuration
+- Coding standards
+- Framework architecture
+
+All of these are already established by the previous prompt and must be followed automatically.
+
+## P — PERSONA
+
+Act as a Senior Playwright Automation Engineer and Senior Playwright Framework Architect.
+
+Continue the implementation exactly according to the standards established in the previous prompt.
+
+Reuse existing framework components wherever possible.
+
+Create new components only when a scenario genuinely requires them.
+
+Do not introduce a different implementation approach.
+
+## O — OUTPUT
+
+For each scenario:
+1. Understand the scenario.
+2. Reuse the existing framework.
+3. Reuse existing Page Objects, utilities, fixtures, and helpers.
+4. Create or update components only when required.
+5. Implement the Playwright automation.
+6. Create or update Cucumber files when applicable.
+7. Use the established locator and assertion standards.
+8. Execute the implemented scenario.
+9. Fix genuine issues found during execution.
+10. Verify the final implementation.
+
+After implementation, provide:
+
+### Scenario Execution Summary
+
+| Scenario | Test File | Status |
+|---|---|---|
+| `<SCENARIO NAME>` | `<FILE>` | Passed/Failed |
+
+### Files Created / Modified
+List only files actually created/modified.
+
+### Execution Result
+Report:
+- Passed scenarios
+- Failed scenarios
+- Issues fixed
+- Remaining issues, if any
+
+Do not claim a scenario passed unless actually executed and validated.
+
+## T — TONE
+
+Be concise, technical, deterministic, and implementation-focused.
+
+Do not repeat the previous framework setup.
+Do not ask the user to provide application credentials or framework configuration again.
+Do not create duplicate framework components.
+Do not modify unrelated code.
+
+## FINAL RULE
+
+This prompt accepts ONLY test scenarios as input.
+
+The user should paste only the scenario names and scenario descriptions.
+
+Everything else must be inherited from the previous Playwright automation prompt.
+
+Do not require any additional information from the user unless a scenario itself is genuinely missing information required for implementation.
+
+Implement all supplied scenarios using the exact same framework and standards established by the previous prompt.
+
